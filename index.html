@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>自适应右侧菜单</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        *
+        {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+        }
+
+        .fl
+        {
+            float: left;
+        }
+        .fr
+        {
+            float: right;
+        }
+        .clearfix
+        {
+            zoom: 1;
+        }
+        .clearfix:after
+        {
+            display: block;
+            content: "";
+            clear: both;
+        }
+
+
+
+        body
+        {
+            background: #3498db;
+            height: 100%;
+            position: fixed;
+        }
+
+        ol, ul
+        {
+            list-style: none;
+        }
+
+
+        a
+        {
+            color: #000;
+            text-decoration: none;
+            webkit-transition: .5s;
+            -moz-transition: .5s;
+            -o-transition: .5s;
+            transition: .5s;
+        }
+
+
+
+        /*菜单样式*/
+        .navMenu
+        {
+            width: 200px;
+            height: 100%;
+            background: black;
+            color: #fff;
+            position: relative;
+            -webkit-transition: left 0.3s;
+            -moz-transition: left 0.3s;
+            transition: left 0.3s;
+        }
+
+        .mobile-menu-wrap .mobile-menu li a, .mobile-menu-wrap .mobile-menu li a:visited
+        {
+            padding: 14px 20px;
+            display: block;
+            border-bottom: 1px solid rgba(0,0,0,0.7);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #FFF;
+            font-family: "Helvetica Neue" , "Helvetica" ,Helvetica,Arial,sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .mobile-menu-wrap .mobile-menu li .sub-menu li a
+        {
+            padding: 12px 20px 14px 40px;
+            font-size: 12px;
+        }
+
+
+        /*菜单按钮样式*/
+        .infinitypush-button
+        {
+            box-shadow: inset 0 4px #3498db, inset 0 6px white, inset 0 9px #3498db, inset 0 11px white, inset 0 14px #3498db, inset 0 16px white;
+            position: fixed;
+            text-indent: -9999px;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            top: 13px;
+            left: 0px;
+            z-index: 99;
+            cursor: pointer;
+            -webkit-transition: left 0.3s;
+            -moz-transition: left 0.3s;
+            transition: left 0.3s;
+        }
+
+        .mobile-menu-wrap
+        {
+            left: -200px;
+        }
+
+        /*内容样式*/
+        .content
+        {
+            width: auto;
+            height: 100%;
+            background: #ccc;
+            color: Black;
+            -webkit-transition: left 0.3s;
+            -moz-transition: left 0.3s;
+            transition: left 0.3s;
+        }
+
+
+
+        /*菜单右侧元素展开样式*/
+        .mobile_left
+        {
+            left: 200px;
+        }
+
+        /*菜单展开样式*/
+        .mobile_menu_left
+        {
+            left: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            function menufun() {
+                if ($(this).hasClass("mobile_left")) {
+                    $(this).removeClass("mobile_left");
+                    $("#navMenu").removeClass("mobile_menu_left");
+                    $("#content").removeClass("mobile_left");
+                } else {
+                    $(this).addClass("mobile_left");
+                    $("#navMenu").addClass("mobile_menu_left");
+                    $("#content").addClass("mobile_left");
+                }
+            }
+
+
+            $("#menuBtn").bind('click', menufun);
+        })
+
+    </script>
+</head>
+<body>
+    <div id="navMenu" class='navMenu mobile-menu-wrap'>
+        <div class="">
+            <ul class="mobile-menu">
+                <li class="menu-item"><a href="javascript:;">.Net</a>
+                    <ul class="sub-menu">
+                        <li class="menu-item "><a href="javascript:;">C#</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item"><a href="javascript:;">DataBase</a>
+                    <ul class="sub-menu">
+                        <li class="menu-item"><a href="javascript:;">Oracle</a></li>
+                        <li class="menu-item"><a href="javascript:;">MS SQL</a></li>
+                        <li class="menu-item"><a href="javascript:;">My SQL</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item"><a href="javascript:;">OS</a>
+                    <ul class="sub-menu">
+                        <li class="menu-item"><a href="javascript:;">Windows</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item"><a href="javascript:;">Music</a></li>
+                <li class="menu-item"><a href="javascript:;">Life</a></li>
+                <li class="menu-item"><a href="javascript:;">Links</a></li>
+                <li class="menu-item"><a href="javascript:;">About</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="menuBtn" class="infinitypush-button">
+    </div>
+    <div id="content" class="content">
+    </div>
+</body>
+</html>
